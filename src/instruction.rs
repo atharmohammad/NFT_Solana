@@ -13,7 +13,7 @@ pub enum TokenInstruction {
 }
 
 impl TokenInstruction {
-    pub fn unpack(input: &[u8]) -> Result<Self, ProgramError> {
+    pub fn unpack(input: &[u32]) -> Result<Self, ProgramError> {
         use TokenError::InvalidInstruction;
         let (&tag, rest) = input.split_first().ok_or(InvalidInstruction)?;
         Ok(match tag {
